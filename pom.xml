@@ -12,6 +12,7 @@
   <name>sharp-demo</name>
   <modules>
     <module>sharp-es</module>
+    <module>sharp-juc</module>
   </modules>
 
   <properties>
