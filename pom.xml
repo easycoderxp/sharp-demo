@@ -13,6 +13,7 @@
   <modules>
     <module>sharp-es</module>
     <module>sharp-juc</module>
+    <module>sharp-rabbitmq</module>
   </modules>
 
   <properties>
