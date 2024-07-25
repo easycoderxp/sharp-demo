@@ -38,7 +38,7 @@ public interface RabbitMqService {
      * @param exchange   交换机
      * @param routingKey 路由key，为空则是 发布与订阅模式（还是看消费者）
      * @param msg        消息内容(所有发送MQ的消息，需要序列化，下面不再叙述)
-     * @param ackId      开启消息发送确认机制，应答ackId，建议根据业务确认唯一值。配置参考{@link com.example.config.ProducerAckConfirmCallback}
+     * @param ackId      开启消息发送确认机制，应答ackId，建议根据业务确认唯一值。
      *                   (需要配置spring.rabbitmq.publisher-confirms=true)：低版本
      *                   或(spring.rabbitmq.publisher-confirm-type=correlated):高版本
      */

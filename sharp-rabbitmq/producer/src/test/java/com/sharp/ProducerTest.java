@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.time.LocalDateTime;
+
 /**
  * @author xiap0308
  * @version v1.0.0
@@ -15,7 +17,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  */
 @Slf4j
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes = RabbitMQProducerApplication.class)
+@SpringBootTest(classes = RabbitMqProducerApplication.class)
 public class ProducerTest {
     @Autowired
     private RabbitMqService rabbitMQService;
@@ -98,5 +100,17 @@ public class ProducerTest {
             String routingKey = i % 2 == 0 ? "topicAck.log.info" : "topicAck.log.error";
             rabbitMQService.sendMessageByExchange("topicAck-exchange", routingKey, "主题模式-测试消费端的ack，路由routingKey=" + routingKey + "  i=" + i);
         }
+    }
+
+    @Test
+    public void messageTransform() throws InterruptedException {
+        Person person = new Person();
+        person.setAge(18);
+        person.setName("li");
+        person.setSex("male");
+        person.setTime(LocalDateTime.now());
+        rabbitMQService.sendMessageByExchange("direct-exchange", "info", person, "888");
+        //异步的ConfirmCallback可能由于资源关闭出问题
+        Thread.sleep(2000);
     }
 }

@@ -13,6 +13,7 @@
     <name>sharp-rabbitmq</name>
     <modules>
         <module>producer</module>
+        <module>consumer</module>
     </modules>
 
     <properties>
